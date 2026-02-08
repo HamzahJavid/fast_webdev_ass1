@@ -4,6 +4,8 @@ let course_titles = document.getElementById("course_card_grid")?.getElementsByTa
 let course_cards_container = document.getElementById("courses_detail_crads");
 let submit_button=document.getElementById("calculate")
 let check_elegibility=document.getElementById("check_elegibility")
+let contact_btn=document.getElementById("contact_btn")
+
 
 const courses=[
     {
@@ -83,7 +85,16 @@ if(course_cards_container){
             courseName.innerHTML = courses[index].course_name;
             courseDuration.innerHTML = courses[index].duration;
             courseFee.innerHTML = courses[index].fee_per_semester;
-        }
+        }function handelConatctForm(){
+    let name=document.getElementById("form_name")
+    let pno=document.getElementById("pno")
+    let email=document.getElementById("email")
+    let captcha=document.getElementById("captcha")
+    let userCaptch=document.get
+
+
+
+}
     })
 }
 
@@ -167,7 +178,48 @@ function calcAndDisplayElegibility(displayEligibilityDetails,calcElegibility){
 
 }
 
+
+
+function handelConatctForm(contact_btn){
+   if(contact_btn){
+    console.log("sdwsw")
+    contact_btn.addEventListener("click",event=>{
+         let name=document.getElementById("name_form").value
+         let pno=document.getElementById("pno").value
+         let email=document.getElementById("email").value
+         let captcha=document.getElementById("captcha").innerHTML
+         let userCaptcha=document.getElementById("user_captcha").value
+
+
+        if (!name || !pno || !email || !userCaptcha) {
+          alert("Please fill all fields");
+          return;
+        }
+
+
+        if (userCaptcha != captcha) {
+            console.log(userCaptcha,captcha)
+          alert("Wrong captcha");
+            
+        }
+
+        else{
+            alert("from submitted")
+
+        }
+        captchaValue = Math.floor(10000 + Math.random() * 90000).toString();
+            document.getElementById("captcha").innerText = captchaValue;
+            document.getElementById("user_captcha").value = "";
+            return;
+    })
+
+    
+   }
+
+}
+
 loadHomeCards(cards,course_titles)
 loadCoursesCards(course_cards_container)
 calcAndDsipalyFee(displayFeeDetails,calculateFee)
 calcAndDisplayElegibility(displayEligibilityDetails,calcElegibility)
+handelConatctForm(contact_btn)
